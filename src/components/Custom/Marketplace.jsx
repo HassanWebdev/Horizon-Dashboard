@@ -167,7 +167,7 @@ function Marketplace() {
             <br /> start creating your own!
           </p>
           <div>
-            <button className="px-[3rem] py-[1rem] bg-white text-2xl text-black rounded-3xl">
+            <button className="px-[3rem] py-[1rem] transition-all bg-white hover:bg-[#441CE8] hover:text-white text-2xl text-black rounded-3xl">
               Discover now
             </button>{" "}
             <button className="px-[3rem] py-[1rem]  text-2xl text-white rounded-3xl">
