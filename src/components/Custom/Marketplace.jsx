@@ -285,22 +285,27 @@ function Marketplace() {
                       <AvatarGroup
                         total={9}
                         className="flex justify-center items-center"
+                        sx={{
+                          "& .MuiAvatar-root": {
+                            width: "3rem",
+                            height: "3rem",
+                          },
+                        }}
                       >
                         <Avatar
                           alt="Remy Sharp"
                           src={`https://i.pravatar.cc/150?img=${index + 3}`}
-                          className="w-12 h-12"
+                          sx={{ width: "3rem", height: "3rem" }}
                         />
-
                         <Avatar
                           alt="Agnes Walker"
                           src={`https://i.pravatar.cc/150?img=${index + 2}`}
-                          className="w-12 h-12"
+                          sx={{ width: "3rem", height: "3rem" }}
                         />
                         <Avatar
                           alt="Trevor Henderson"
                           src={`https://i.pravatar.cc/150?img=${index + 3}`}
-                          className="w-12 h-12"
+                          sx={{ width: "3rem", height: "3rem" }}
                         />
                       </AvatarGroup>
                     </div>
@@ -350,22 +355,27 @@ function Marketplace() {
                       <AvatarGroup
                         total={9}
                         className="flex justify-center items-center"
+                        sx={{
+                          "& .MuiAvatar-root": {
+                            width: "3rem",
+                            height: "3rem",
+                          },
+                        }}
                       >
                         <Avatar
                           alt="Remy Sharp"
                           src={`https://i.pravatar.cc/150?img=${index + 3}`}
-                          className="w-12 h-12"
+                          sx={{ width: "3rem", height: "3rem" }}
                         />
-
                         <Avatar
                           alt="Agnes Walker"
                           src={`https://i.pravatar.cc/150?img=${index + 2}`}
-                          className="w-12 h-12"
+                          sx={{ width: "3rem", height: "3rem" }}
                         />
                         <Avatar
                           alt="Trevor Henderson"
                           src={`https://i.pravatar.cc/150?img=${index + 3}`}
-                          className="w-12 h-12"
+                          sx={{ width: "3rem", height: "3rem" }}
                         />
                       </AvatarGroup>
                     </div>
@@ -393,26 +403,55 @@ function Marketplace() {
             </div>
           </div>
           <div className="flex flex-col gap-10">
-            {
-              Rightmembers.map((item,index)=>{
-                return (
-                  <div key={index} className="flex justify-between cursor-pointer items-center transition-all px-3 py-3 rounded-3xl hover:shadow-lg ">
-                    <div className="flex items-center gap-5">
-                      <img src={item.img} className="w-28 h-28 rounded-3xl" alt="" />
-                      <div>
-                        <h1 className="text-3xl font-bold text-[#1B2559]">{item.title}</h1>
-                        <h1 className="text-xl text-gray-400"> By {item.artist}</h1>
-                      </div>
-                    </div>
-                    <div className="flex gap-5 items-center">
-                    <svg className="text-2xl" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" focusable="false" class="chakra-icon css-1gpdrkf" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M311.9 260.8L160 353.6 8 260.8 160 0l151.9 260.8zM160 383.4L8 290.6 160 512l152-221.4-152 92.8z"></path></svg>
-                      <h1 className="text-3xl font-bold text-black">{item.price} <br />{item.currency}</h1>
-                      <h1 className="text-2xl text-gray-400">{item.timeAgo} <br />ago</h1>
+            {Rightmembers.map((item, index) => {
+              return (
+                <div
+                  key={index}
+                  className="flex justify-between cursor-pointer items-center transition-all px-3 py-3 rounded-3xl hover:shadow-lg "
+                >
+                  <div className="flex items-center gap-5">
+                    <img
+                      src={item.img}
+                      className="w-28 h-28 rounded-3xl"
+                      alt=""
+                    />
+                    <div>
+                      <h1 className="text-3xl font-bold text-[#1B2559]">
+                        {item.title}
+                      </h1>
+                      <h1 className="text-xl text-gray-400">
+                        {" "}
+                        By {item.artist}
+                      </h1>
                     </div>
                   </div>
-                )
-              })
-            }
+                  <div className="flex gap-5 items-center">
+                    <svg
+                      className="text-2xl"
+                      stroke="currentColor"
+                      fill="currentColor"
+                      stroke-width="0"
+                      viewBox="0 0 320 512"
+                      focusable="false"
+                      class="chakra-icon css-1gpdrkf"
+                      height="1em"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M311.9 260.8L160 353.6 8 260.8 160 0l151.9 260.8zM160 383.4L8 290.6 160 512l152-221.4-152 92.8z"></path>
+                    </svg>
+                    <h1 className="text-3xl font-bold text-black">
+                      {item.price} <br />
+                      {item.currency}
+                    </h1>
+                    <h1 className="text-2xl text-gray-400">
+                      {item.timeAgo} <br />
+                      ago
+                    </h1>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
