@@ -312,7 +312,7 @@ function Marketplace() {
                     <div className="text-[#523CFB] text-2xl font-bold tracking-wider mb-5">
                       Current Bid:0.91ETH
                     </div>
-                    <button className="bg-[#11057B] transition-all hover:bg-[#11057bb9] text-gray-200 text-3xl px-8 py-2 font-neue_montreal tracking-wider rounded-full">
+                    <button className="bg-[#11057B] transition-all font-semibold hover:bg-[#11057bb9] text-gray-200 text-3xl px-8 py-2 font-neue_montreal tracking-wider rounded-full">
                       Place Bid
                     </button>
                   </div>
