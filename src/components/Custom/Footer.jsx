@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React, { useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { Progress } from "@/components/ui/progress";
@@ -8,7 +8,7 @@ import {
   FaExclamationCircle,
 } from "react-icons/fa";
 import { IoIosCheckbox } from "react-icons/io";
-
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 
 function Footer() {
   const [value, onChange] = useState(new Date());
@@ -49,6 +49,57 @@ function Footer() {
     { text: "Illustrations" },
     { text: "Promotional LP" },
   ];
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+  const getDaysInMonth = (date) => {
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const firstDayOfMonth = new Date(year, month, 1).getDay();
+    const daysArray = [];
+
+    // Add empty slots for days before the 1st of the month
+    for (let i = 0; i < (firstDayOfMonth + 6) % 7; i++) {
+      daysArray.push(null);
+    }
+
+    // Add the days of the month
+    for (let i = 1; i <= daysInMonth; i++) {
+      daysArray.push(new Date(year, month, i));
+    }
+
+    return daysArray;
+  };
+
+  const navigateMonth = (direction) => {
+    setCurrentDate(
+      new Date(currentDate.getFullYear(), currentDate.getMonth() + direction, 1)
+    );
+  };
+
+  const formatDate = (date) => {
+    return date.toLocaleDateString("en-US", { year: "numeric", month: "long" });
+  };
+
+  const isToday = (date) => {
+    const today = new Date();
+    return (
+      date.getDate() === today.getDate() &&
+      date.getMonth() === today.getMonth() &&
+      date.getFullYear() === today.getFullYear()
+    );
+  };
+
+  const isSelected = (date) => {
+    return (
+      date.getDate() === selectedDate.getDate() &&
+      date.getMonth() === selectedDate.getMonth() &&
+      date.getFullYear() === selectedDate.getFullYear()
+    );
+  };
   return (
     <div>
       <div className="w-full mb-[2rem] flex gap-[2rem] ">
@@ -154,7 +205,53 @@ function Footer() {
           </div>
         </div>
         <div className="p-[2rem] w-[25%] bg-white rounded-3xl shadow-lg">
-        
+          <div className="max-w-md mx-auto bg-white  rounded-lg overflow-hidden">
+            <div className="flex items-center justify-between  ">
+              <button
+                onClick={() => navigateMonth(-1)}
+                className="bg-[#421BFC] text-white px-5 py-5 text-3xl rounded-2xl"
+              >
+                <ChevronLeftIcon className="h-6 w-6" />
+              </button>
+              <h2 className="text-3xl font-semibold text-gray-800">
+                {formatDate(currentDate)}
+              </h2>
+              <button
+                onClick={() => navigateMonth(1)}
+                className="bg-[#421BFC] text-white px-5 py-5 text-3xl rounded-2xl"
+              >
+                <ChevronRightIcon className="h-6 w-6" />
+              </button>
+            </div>
+            <div className="grid grid-cols-7 gap-1 mt-10 ">
+              {daysOfWeek.map((day) => (
+                <div
+                  key={day}
+                  className="text-center text-xl font-medium text-gray-600 mb-2  py-1"
+                >
+                  {day}
+                </div>
+              ))}
+              {getDaysInMonth(currentDate).map((date, index) => (
+                <button
+                  key={index}
+                  onClick={() => date && setSelectedDate(date)}
+                  className={`text-center  text-3xl py-1 rounded-xl ${
+                    date
+                      ? isToday(date)
+                        ? "bg-[#421BFC] text-white"
+                        : isSelected(date)
+                        ? "bg-[#311bfc] text-white"
+                        : "hover:bg-gray-300"
+                      : "text-[#421BFC]"
+                  }`}
+                  disabled={!date}
+                >
+                  {date ? date.getDate() : ""}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
