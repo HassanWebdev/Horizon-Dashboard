@@ -239,9 +239,9 @@ function Footer() {
                   className={`text-center  text-3xl py-1 rounded-xl ${
                     date
                       ? isToday(date)
-                        ? "bg-[#421BFC] text-white"
+                        ? "bg-[#4319FE] text-white"
                         : isSelected(date)
-                        ? "bg-[#311bfc] text-white"
+                        ? "bg-[#4319FE] text-white"
                         : "hover:bg-gray-300"
                       : "text-[#421BFC]"
                   }`}
